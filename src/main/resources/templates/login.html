@@ -58,43 +58,24 @@
                     <div class="card bg-dark text-white box"  >
                         <div class="card-body p-5 text-center">
 
-                            <form class="mb-md-0 mt-md-4 pb-2" action="#" th:action="@{/login_req}" th:object="${login}" method="post">
+                            <form class="mb-md-3 mt-md-4 pb-5" action="#" th:action="@{/login_req}" th:object="${login}" method="post">
 
-                                <h2 class="fw-bold mb-2 text-uppercase">Registrace</h2>
-                                <p class="text-white-50 mb-5">Registrace účtu <a class="text-white-50 fw-bold" href="/">Pojištěno</a></p>
+                                <h2 class="fw-bold mb-2 text-uppercase">Přihlášení</h2>
+                                <p class="text-white-50 mb-5">Přihlášení k účtu <a class="text-white-50 fw-bold" href="/">Pojištěno</a></p>
 
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="username">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-light" placeholder="jméno" required/>
-                                </div>
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="username">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-light" placeholder="příjmení" required/>
-                                </div>
-
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="useremail">
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
                                     <input type="email" class="form-control form-control-lg bg-dark text-light" placeholder="Email" required/>
                                 </div>
 
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="usertel">
-                                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" class="form-control form-control-lg bg-dark text-light" placeholder="Telefon" required/>
-                                </div>
-
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="userpass">
+                                <div data-mdb-input-init class="form-outline form-white mb-4">
                                     <input type="password" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo" required/>
                                 </div>
 
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="userpass">
-                                    <input type="password" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo znovu" required/>
-                                </div>
-
-
-
-                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5 mt-3" type="submit" >Registrovat</button>
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5 mt-3" type="submit" >Přihlásit</button>
 
                             </form>
 
-                            <p class="mb-0">Už máte účet? <a href="/login" class="text-white-50 fw-bold">Přihlásit</a></p>
-
-
+                            <p class="mb-0">Ještě nemáte účet? <a href="/register" class="text-white-50 fw-bold">Registrovat</a></p>
 
                         </div>
                     </div>
@@ -108,6 +89,5 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-
 </body>
 </html>
