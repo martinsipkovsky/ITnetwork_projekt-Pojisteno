@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Jejda!</title>
+</head>
+<body>
+<h1>Nastala chyba - <span th:text="${status}"></span></h1>
+<p th:text="${timestamp}"></p>
+
+<h2>Chyba:</h2>
+<p th:text="${message}"></p>
+<pre th:text="${trace}"></pre>
+</body>
+</html>
