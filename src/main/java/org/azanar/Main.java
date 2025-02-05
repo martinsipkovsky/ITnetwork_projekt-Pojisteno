@@ -3,14 +3,13 @@ package org.azanar;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+@EnableJpaRepositories
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mariadb://localhost:3306/pojisteno?user=root&password=");
+    public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
     }
 }
