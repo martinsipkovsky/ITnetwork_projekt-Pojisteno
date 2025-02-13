@@ -58,7 +58,7 @@
                     <div class="card bg-dark text-white box"  >
                         <div class="card-body p-5 text-center">
 
-                            <form class="mb-md-0 mt-md-4 pb-2" action="#" th:action="@{/login_req}" th:object="${user}" method="post">
+                            <form class="mb-md-0 mt-md-4 pb-2" action="#" th:action="@{/register}" th:object="${user}" method="post">
 
                                 <h2 class="fw-bold mb-2 text-uppercase">Registrace</h2>
                                 <p class="text-white-50 mb-5">Registrace účtu <a class="text-white-50 fw-bold" href="/">Pojištěno</a></p>
@@ -75,17 +75,12 @@
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline form-white mb-4" name="usertel">
-                                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" class="form-control form-control-lg bg-dark text-light" placeholder="Telefon" th:field="${user.telephone}" required/>
+                                    <input type="tel" class="form-control form-control-lg bg-dark text-light" placeholder="Telefon" th:field="${user.telephone}" required/>
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline form-white mb-4" name="userpass">
                                     <input type="password" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo" minlength="8" th:field="${user.password}" required/>
                                 </div>
-
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="userpass">
-                                    <input type="password" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo znovu" minlength="8" th:field="${user.password2}" required/>
-                                </div>
-
 
 
                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5 mt-3" type="submit" >Registrovat</button>
