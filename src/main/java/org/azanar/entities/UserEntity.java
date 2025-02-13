@@ -21,14 +21,7 @@ public class UserEntity {
     private String telefon;
 
     @Column(nullable = false)
-    private String datumNarozeni;
-
-    @Column(nullable = false)
     private String heslo;
-
-    public void setDatumNarozeni(String datumNarozeni) {
-        this.datumNarozeni = datumNarozeni;
-    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -56,10 +49,6 @@ public class UserEntity {
 
     public long getUserId() {
         return userId;
-    }
-
-    public String getDatumNarozeni() {
-        return datumNarozeni;
     }
 
     public String getEmail() {
