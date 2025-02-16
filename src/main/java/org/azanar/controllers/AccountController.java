@@ -33,24 +33,26 @@ public class AccountController {
     public String register(
             @Valid @ModelAttribute UserDTO userDTO,
             BindingResult result,
-            RedirectAttributes redirectAttributes
+            RedirectAttributes redirectAttributes,
+            Model model
     ) {
+        model.addAttribute("user", new UserDTO());
         if (result.hasErrors())
-            return renderRegister((Model) userDTO);
+            return renderRegister(model);
 
         try {
             userService.create(userDTO, false);
         } catch (DuplicateEmailException e) {
             result.rejectValue("email", "error", "Email je již používán.");
-            return "/pages/account/register";
+            return "/register";
         } catch (PasswordsDoNotEqualException e) {
             result.rejectValue("password", "error", "Hesla se nerovnají.");
             result.rejectValue("confirmPassword", "error", "Hesla se nerovnají.");
-            return "/pages/account/register";
+            return "/register";
         }
 
         redirectAttributes.addFlashAttribute("success", "Uživatel zaregistrován.");
-        return "redirect:/account/login";
+        return "redirect:/login";
     }
 
 }
