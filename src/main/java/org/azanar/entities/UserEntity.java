@@ -23,6 +23,9 @@ public class UserEntity {
     @Column(nullable = false)
     private String heslo;
 
+    @Column(nullable = false)
+    private boolean admin;
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -69,5 +72,13 @@ public class UserEntity {
 
     public String getTelefon() {
         return telefon;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public boolean isAdmin() {
+        return admin;
     }
 }

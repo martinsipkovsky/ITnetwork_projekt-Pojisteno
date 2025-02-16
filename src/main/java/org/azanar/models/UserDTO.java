@@ -11,6 +11,9 @@ public class UserDTO {
     private String password;
 
     @NotBlank(message = "Vyplňte obsah")
+    private String confirmPassword;
+
+    @NotBlank(message = "Vyplňte obsah")
     private String username;
 
     @NotBlank(message = "Vyplňte obsah")
@@ -48,4 +51,11 @@ public class UserDTO {
 
     public String getTelephone() {return telephone;}
 
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
 }
