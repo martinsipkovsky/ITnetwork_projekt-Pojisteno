@@ -2,7 +2,6 @@ package org.azanar.models;
 
 import org.azanar.exceptions.DuplicateEmailException;
 import org.azanar.exceptions.PasswordsDoNotEqualException;
-import org.azanar.models.UserDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 

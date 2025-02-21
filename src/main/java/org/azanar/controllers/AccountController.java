@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AccountController {
     private UserService userService;
 
+
     @GetMapping("login")
     public String renderLogin(Model model) {
         model.addAttribute("user", new UserDTO());
