@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,11 +66,11 @@
                                 <p class="text-white-50 mb-5">Přihlášení k účtu <a class="text-white-50 fw-bold" href="/">Pojištěno</a></p>
 
                                 <div data-mdb-input-init class="form-outline form-white mb-4">
-                                    <input type="email" name="email" id="email" class="form-control form-control-lg bg-dark text-light" placeholder="Email" th:field="${user.email}" required/>
+                                    <label for="email"></label><input type="email" name="email" id="email" class="form-control form-control-lg bg-dark text-light" placeholder="Email" th:field="${user.email}" required/>
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline form-white mb-4">
-                                    <input type="password" name="password" id="password" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo" minlength="8" th:field="${user.password}" required/>
+                                    <label for="password"></label><input type="password" name="password" id="password" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo" minlength="8" th:field="${user.password}" required/>
                                 </div>
 
                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5 mt-3" type="submit" >Přihlásit</button>
