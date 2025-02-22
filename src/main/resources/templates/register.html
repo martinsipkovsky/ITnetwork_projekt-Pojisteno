@@ -52,38 +52,39 @@
 
 <div class="container-fluid text-center">
     <section class="vh-60 gradient-border">
+        <div class="py-2 flash-message message-error" th:text="${error}" th:if="${error}"></div>
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card bg-dark text-white box"  >
                         <div class="card-body p-5 text-center">
 
-                            <form class="mb-md-0 mt-md-4 pb-2" action="#" th:action="@{/register}" th:object="${user}" method="post">
+                            <form class="mb-md-0 mt-md-4 pb-2" action="#" th:action="@{/register}" th:object="${userDTO}" method="post">
 
                                 <h2 class="fw-bold mb-2 text-uppercase">Registrace</h2>
                                 <p class="text-white-50 mb-5">Registrace účtu <a class="text-white-50 fw-bold" href="/">Pojištěno</a></p>
 
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="firstname">
-                                    <label for="firstname"></label><input type="text" name="firstname" id="firstname" class="form-control form-control-lg bg-dark text-light" placeholder="jméno" th:field="${user.surename}" required/>
+                                <div data-mdb-input-init class="form-outline form-white mb-4 form-group" name="firstname">
+                                    <input type="text" name="firstname" id="firstname" class="form-control form-control-lg bg-dark text-light" placeholder="jméno" th:field="*{surename}" required/>
                                 </div>
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="lastname">
-                                    <label for="lastname"></label><input type="text" name="lastname" id="lastname" class="form-control form-control-lg bg-dark text-light" placeholder="příjmení" th:field="${user.lastname}" required/>
-                                </div>
-
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="email">
-                                    <label for="email"></label><input type="email" name="email" id="email" class="form-control form-control-lg bg-dark text-light" placeholder="Email" th:field="${user.email}" required/>
+                                <div data-mdb-input-init class="form-outline form-white mb-4 form-group" name="lastname">
+                                    <input type="text" name="lastname" id="lastname" class="form-control form-control-lg bg-dark text-light" placeholder="příjmení" th:field="*{lastname}" required/>
                                 </div>
 
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="tel">
-                                    <label for="tel"></label><input type="tel" name="tel" id="tel" class="form-control form-control-lg bg-dark text-light" placeholder="Telefon" th:field="${user.telephone}" required/>
+                                <div data-mdb-input-init class="form-outline form-white mb-4 form-group" name="email">
+                                    <input type="email" name="email" id="email" class="form-control form-control-lg bg-dark text-light" placeholder="Email" th:field="*{email}" required/>
                                 </div>
 
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="password">
-                                    <label for="password"></label><input type="password" name="password" id="password" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo" minlength="8" th:field="${user.password}" required/>
+                                <div data-mdb-input-init class="form-outline form-white mb-4 form-group" name="tel">
+                                    <input type="tel" name="tel" id="tel" class="form-control form-control-lg bg-dark text-light" placeholder="Telefon" th:field="*{telephone}" required/>
                                 </div>
 
-                                <div data-mdb-input-init class="form-outline form-white mb-4" name="password">
-                                    <label for="confirmPassword"></label><input type="password" name="confirmPassword" id="confirmPassword" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo znovu" minlength="8" th:field="${user.confirmPassword}" required/>
+                                <div data-mdb-input-init class="form-outline form-white mb-4 form-group" name="password">
+                                    <input type="password" name="password" id="password" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo" minlength="8" th:field="*{password}" required/>
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline form-white mb-4 form-group" name="password">
+                                    <input type="password" name="confirmPassword" id="confirmPassword" class="form-control form-control-lg bg-dark text-light" placeholder="Heslo znovu" minlength="8" th:field="*{confirmPassword}" required/>
                                 </div>
 
 

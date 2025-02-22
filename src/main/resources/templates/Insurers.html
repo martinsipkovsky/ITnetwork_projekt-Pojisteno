@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" lang="cs">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +15,23 @@
 <body class="bg-dark">
 <header class="bg-dark text-white container-fluid py-0">
     <div class="container-fluid mt-2 mb-2">
-        <form action="/login" class="bg-dark">
-            <div class="row row-cols-lg-auto g-3 align-items-center mb-3 d-flex justify-content-between">
+        <div class="row row-cols-lg-auto g-3 align-items-center mb-3 d-flex justify-content-between">
+            <div class="col">
                 <h1 class="display-6">Pojištěno</h1>
-                <input type="submit" class="btn btn-primary float-end" value="Přihlásit">
             </div>
-        </form>
+            <div class="col">
+                <form method="post" th:action="@{/login}">
+                    <button class="btn btn-primary text-white">
+                        <p sec:authorize="isAnonymous()">
+                            Přihlásit se
+                        <p>
+                        <p sec:authorize="isAuthenticated()">
+                            Odhlásit se
+                        </p>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
 </header>

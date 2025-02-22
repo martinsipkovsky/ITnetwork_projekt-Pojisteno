@@ -33,6 +33,13 @@ public class UserEntity implements UserDetails {
     private boolean admin;
 
     // region: UserDetails Methods
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + (admin ? "ADMIN" : "USER"));
+        return List.of(authority);
+    }
+
     @Override
     public String getUsername() {
         return email;
@@ -41,12 +48,6 @@ public class UserEntity implements UserDetails {
     @Override
     public String getPassword() {
         return heslo;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + (admin ? "ADMIN" : "USER"));
-        return List.of(authority);
     }
 
     @Override

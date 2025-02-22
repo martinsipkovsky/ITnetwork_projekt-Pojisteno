@@ -28,7 +28,7 @@ public class ApplicationSecurityConfiguration {
                 .permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/")
+                .logoutUrl("/logout")
                 .and()
                 .build();
     }

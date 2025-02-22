@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.azanar.exceptions.DuplicateEmailException;
 import org.azanar.exceptions.PasswordsDoNotEqualException;
 import org.azanar.models.UserDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AccountController {
     private UserService userService;
 
+    @Autowired  // Spring automaticky inicializuje službu
+    public AccountController(UserService userService) {
+        this.userService = userService;
+    }
+
 
     @GetMapping("login")
     public String renderLogin(Model model) {
@@ -25,8 +31,7 @@ public class AccountController {
     }
 
     @GetMapping("register")
-    public String renderRegister(Model model) {
-        model.addAttribute("user", new UserDTO());
+    public String renderRegister(@ModelAttribute UserDTO userDTO) {
         return "/register";
     }
 
@@ -34,21 +39,24 @@ public class AccountController {
     public String register(
             @Valid @ModelAttribute UserDTO userDTO,
             BindingResult result,
-            RedirectAttributes redirectAttributes,
-            Model model
+            RedirectAttributes redirectAttributes
     ) {
-        model.addAttribute("user", new UserDTO());
-        if (result.hasErrors())
-            return renderRegister(model);
+/*
+        if (result.hasErrors()) {
+            return renderRegister(userDTO);
+        }
+*/
 
         try {
             userService.create(userDTO, false);
         } catch (DuplicateEmailException e) {
             result.rejectValue("email", "error", "Email je již používán.");
+            System.out.println("Email already in use!");
             return "/register";
         } catch (PasswordsDoNotEqualException e) {
             result.rejectValue("password", "error", "Hesla se nerovnají.");
             result.rejectValue("confirmPassword", "error", "Hesla se nerovnají.");
+            System.out.println("Passwords do not match!");
             return "/register";
         }
 
