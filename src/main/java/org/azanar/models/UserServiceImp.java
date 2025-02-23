@@ -25,10 +25,10 @@ public class UserServiceImp implements UserService {
             throw new PasswordsDoNotEqualException();
         UserEntity userEntity = new UserEntity();
 
-        userEntity.setJmeno(user.getSurename());
+        userEntity.setJmeno(user.getFirstname());
         userEntity.setPrijmeni(user.getLastname());
         userEntity.setEmail(user.getEmail());
-        userEntity.setTelefon(user.getTelephone());
+        userEntity.setTelefon(user.getPhoneNumber());
         userEntity.setHeslo(passwordEncoder.encode(user.getPassword()));
         userEntity.setAdmin(isAdmin);
 

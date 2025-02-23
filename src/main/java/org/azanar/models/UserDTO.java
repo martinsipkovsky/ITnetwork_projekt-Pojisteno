@@ -14,10 +14,10 @@ public class UserDTO {
     private String confirmPassword;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String telephone;
+    private String phoneNumber;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String surename;
+    private String firstname;
 
     @NotBlank(message = "Vyplňte obsah")
     private String lastname;
@@ -32,17 +32,17 @@ public class UserDTO {
 
     public void setPassword(String password) {this.password = password;}
 
-    public void setSurename(String surename) {this.surename = surename;}
+    public void setFirstname(String firstname) {this.firstname = firstname;}
 
-    public String getSurename() {return surename;}
+    public String getFirstname() {return firstname;}
 
     public void setLastname(String lastname) {this.lastname = lastname;}
 
     public String getLastname() {return lastname;}
 
-    public void setTelephone(String telephone) {this.telephone = telephone;}
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
-    public String getTelephone() {return telephone;}
+    public String getPhoneNumber() {return phoneNumber;}
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;

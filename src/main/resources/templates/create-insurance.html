@@ -41,18 +41,18 @@
     </div>
 </section>
 <section>
-    <form class="container w-25 text-white mt-5 p-3 py-2">
+    <form class="container w-25 text-white mt-5 p-3 py-2" th:object="${insuranceDTO}">
         <div class="row pt-2">
             <div class="col-sm">
                 <label>Jméno:</label>
                 <label>
-                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control"/>
+                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{firstname}"/>
                 </label>
             </div>
             <div class="col-sm">
                 <label>Příjmení:</label>
                 <label>
-                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control"/>
+                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{lastname}"/>
                 </label>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="col-sm">
                 <label>Email:</label>
                 <label>
-                    <input type="email" class="border border-secondary rounded bg-dark text-white w-100 form-control"/>
+                    <input type="email" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{email}"/>
                 </label>
             </div>
         </div>
@@ -68,7 +68,7 @@
             <div class="col-sm">
                 <label>Ulice a č. p.:</label>
                 <label>
-                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control"/>
+                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{street}"/>
                 </label>
             </div>
         </div>
@@ -76,13 +76,13 @@
             <div class="col-sm">
                 <label>Město:</label>
                 <label>
-                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control"/>
+                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{city}"/>
                 </label>
             </div>
             <div class="col-sm">
                 <label>PSČ:</label>
                 <label>
-                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control"/>
+                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{postCode}"/>
                 </label>
             </div>
         </div>
@@ -90,7 +90,7 @@
             <div class="col-sm">
                 <label>Telefon:</label>
                 <label>
-                    <input type="tel" class="border border-secondary rounded bg-dark text-white w-100 form-control"/>
+                    <input type="tel" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{phoneNumber}"/>
                 </label>
             </div>
         </div>
