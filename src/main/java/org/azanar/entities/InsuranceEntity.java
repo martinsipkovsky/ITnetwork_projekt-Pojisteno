@@ -1,9 +1,6 @@
 package org.azanar.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -13,22 +10,22 @@ public class InsuranceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long contractId;
 
-    @GeneratedValue
+    @Column(nullable = false)
     private long userId;
 
-    @GeneratedValue
+    @Column(nullable = false)
     private String insuranceType;
 
-    @GeneratedValue
+    @Column(nullable = false)
     private String suma;
 
-    @GeneratedValue
+    @Column(nullable = false)
     private String item;
 
-    @GeneratedValue
+    @Column(nullable = false)
     private Date created;
 
-    @GeneratedValue
+    @Column(nullable = false)
     private Date expires;
 
     public long getUserId() {
