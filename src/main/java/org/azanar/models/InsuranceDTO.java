@@ -2,81 +2,83 @@ package org.azanar.models;
 
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.Date;
+
 public class InsuranceDTO {
     @NotBlank(message = "Vyplňte obsah")
-    private String firstname;
+    private String userId;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String lastname;
+    private String insuranceType;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String email;
+    private String suma;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String street;
+    private String item;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String city;
+    private Date created;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String postCode;
+    private Date expires;
 
     @NotBlank(message = "Vyplňte obsah")
     private String phoneNumber;
 
-    public void setCity(@NotBlank(message = "Vyplňte obsah") String city) {
-        this.city = city;
+    public void setCreated(@NotBlank(message = "Vyplňte obsah") Date created) {
+        this.created = created;
     }
 
-    public void setEmail(@NotBlank(message = "Vyplňte obsah") String email) {
-        this.email = email;
+    public void setSuma(@NotBlank(message = "Vyplňte obsah") String suma) {
+        this.suma = suma;
     }
 
-    public void setFirstname(@NotBlank(message = "Vyplňte obsah") String firstname) {
-        this.firstname = firstname;
+    public void setUserId(@NotBlank(message = "Vyplňte obsah") String userId) {
+        this.userId = userId;
     }
 
-    public void setLastname(@NotBlank(message = "Vyplňte obsah") String lastname) {
-        this.lastname = lastname;
+    public void setInsuranceType(@NotBlank(message = "Vyplňte obsah") String insuranceType) {
+        this.insuranceType = insuranceType;
     }
 
     public void setPhoneNumber(@NotBlank(message = "Vyplňte obsah") String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setPostCode(@NotBlank(message = "Vyplňte obsah") String postCode) {
-        this.postCode = postCode;
+    public void setExpires(@NotBlank(message = "Vyplňte obsah") Date expires) {
+        this.expires = expires;
     }
 
-    public void setStreet(@NotBlank(message = "Vyplňte obsah") String street) {
-        this.street = street;
+    public void setItem(@NotBlank(message = "Vyplňte obsah") String item) {
+        this.item = item;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getCity() {
-        return city;
+    public @NotBlank(message = "Vyplňte obsah") Date getCreated() {
+        return created;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getEmail() {
-        return email;
+    public @NotBlank(message = "Vyplňte obsah") String getSuma() {
+        return suma;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getFirstname() {
-        return firstname;
+    public @NotBlank(message = "Vyplňte obsah") String getUserId() {
+        return userId;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getLastname() {
-        return lastname;
+    public @NotBlank(message = "Vyplňte obsah") String getInsuranceType() {
+        return insuranceType;
     }
 
     public @NotBlank(message = "Vyplňte obsah") String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getPostCode() {
-        return postCode;
+    public @NotBlank(message = "Vyplňte obsah") Date getExpires() {
+        return expires;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getStreet() {
-        return street;
+    public @NotBlank(message = "Vyplňte obsah") String getItem() {
+        return item;
     }
 }
