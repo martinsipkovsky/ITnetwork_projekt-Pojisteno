@@ -15,7 +15,7 @@
     <body class="bg-dark">
     <header class="bg-dark text-white container-fluid py-0">
         <div class="container-fluid mt-2 mb-2">
-            <div class="row row-cols-lg-auto g-3 align-items-center mb-3 d-flex justify-content-between">
+            <div class="row row-cols-lg-auto g-3 align-items-center mb-3 d-flex justify-content-center">
                 <div class="col">
                     <h1 class="display-6">Pojištěno</h1>
                 </div>
@@ -36,20 +36,20 @@
 
     </header>
         <section>
-            <div class="container w-25 text-white border-white border mt-5 p-3" id="User">
+            <form class="container w-25 text-white border-white border mt-5 p-3" id="User">
                 <div class="row pb-4">
                     <div class="col-sm">
                         <p>Jméno:</p>
                     </div>
                     <div class="col-sm">
-                        <p th:text="${firstname}"></p>
+                        <p th:text="${user.firstname}"></p>
                     </div>
 
                     <div class="col-sm">
                         <p>Příjmení:</p>
                     </div>
                     <div class="col-sm">
-                        <p th:text="${lastname}"></p>
+                        <p th:text="${user.lastname}"></p>
                     </div>
                 </div>
                 <div class="row">
@@ -57,7 +57,7 @@
                         <p>email</p>
                     </div>
                     <div class="col-sm">
-                        <p>[]</p>
+                        <p th:text="${user.email}"></p>
                     </div>
                 </div>
                 <div class="row">
@@ -65,26 +65,10 @@
                         <p>telefon</p>
                     </div>
                     <div class="col-sm">
-                        <p>[]</p>
+                        <p th:text="${user.phoneNumber}"></p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <p>Ulice a č. p.</p>
-                    </div>
-                    <div class="col-sm">
-                        <p>[]</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <p>Město</p>
-                    </div>
-                    <div class="col-sm">
-                        <p>[]</p>
-                    </div>
-                </div>
-            </div>
+            </form>
         </section>
 
     <section>

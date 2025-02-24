@@ -18,15 +18,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AccountController {
     private UserService userService;
 
-    @Autowired  // Spring automaticky inicializuje službu
+    @Autowired
     public AccountController(UserService userService) {
         this.userService = userService;
     }
 
 
     @GetMapping("login")
-    public String renderLogin(Model model) {
-        model.addAttribute("user", new UserDTO());
+    public String renderLogin(@ModelAttribute UserDTO userDTO) {
         return "/login";
     }
 
@@ -41,11 +40,10 @@ public class AccountController {
             BindingResult result,
             RedirectAttributes redirectAttributes
     ) {
-/*
         if (result.hasErrors()) {
             return renderRegister(userDTO);
         }
-*/
+
 
         try {
             userService.create(userDTO, false);

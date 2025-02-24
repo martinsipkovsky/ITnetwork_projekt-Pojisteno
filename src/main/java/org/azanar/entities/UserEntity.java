@@ -15,39 +15,35 @@ public class UserEntity implements UserDetails {
     private long userId;
 
     @Column(nullable = false)
-    private String jmeno;
+    private String firstname;
 
     @Column(nullable = false)
-    private String prijmeni;
+    private String lastname;
 
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
-    private String telefon;
+    private String phoneNumber;
 
     @Column(nullable = false)
-    private String heslo;
+    private String password;
 
     @Column(nullable = false)
     private boolean admin;
 
     // region: UserDetails Methods
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + (admin ? "ADMIN" : "USER"));
-        return List.of(authority);
-    }
-
     @Override
     public String getUsername() {
         return email;
     }
 
+
+
     @Override
-    public String getPassword() {
-        return heslo;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + (admin ? "ADMIN" : "USER"));
+        return List.of(authority);
     }
 
     @Override
@@ -75,24 +71,24 @@ public class UserEntity implements UserDetails {
         this.email = email;
     }
 
-    public void setJmeno(String jmeno) {
-        this.jmeno = jmeno;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setPrijmeni(String prijmeni) {
-        this.prijmeni = prijmeni;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public void setHeslo(String heslo) {
-        this.heslo = heslo;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setTelefon(String telefon) {
-        this.telefon = telefon;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public long getUserId() {
@@ -103,20 +99,21 @@ public class UserEntity implements UserDetails {
         return email;
     }
 
-    public String getJmeno() {
-        return jmeno;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getHeslo() {
-        return heslo;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public String getPrijmeni() {
-        return prijmeni;
+    public String getLastname() {
+        return lastname;
     }
 
-    public String getTelefon() {
-        return telefon;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setAdmin(boolean admin) {

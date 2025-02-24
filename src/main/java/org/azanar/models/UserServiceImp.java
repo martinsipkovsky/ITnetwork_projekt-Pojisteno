@@ -5,6 +5,7 @@ import org.azanar.exceptions.PasswordsDoNotEqualException;
 import org.azanar.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,11 +26,11 @@ public class UserServiceImp implements UserService {
             throw new PasswordsDoNotEqualException();
         UserEntity userEntity = new UserEntity();
 
-        userEntity.setJmeno(user.getFirstname());
-        userEntity.setPrijmeni(user.getLastname());
+        userEntity.setFirstname(user.getFirstname());
+        userEntity.setLastname(user.getLastname());
         userEntity.setEmail(user.getEmail());
-        userEntity.setTelefon(user.getPhoneNumber());
-        userEntity.setHeslo(passwordEncoder.encode(user.getPassword()));
+        userEntity.setPhoneNumber(user.getPhoneNumber());
+        userEntity.setPassword(passwordEncoder.encode(user.getPassword()));
         userEntity.setAdmin(isAdmin);
 
         try {
@@ -40,8 +41,17 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Username, " + username + " not found"));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        if (email == null || email.isEmpty()) {
+            throw new UsernameNotFoundException("Email je prázdný nebo null");
+        }
+
+        UserEntity user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Uživatel nenalezen: " + email));
+
+        System.out.println("Nalezen uživatel: " + user.getEmail() + " | Heslo: " + user.getPassword());
+
+        return user;
     }
+
 }
