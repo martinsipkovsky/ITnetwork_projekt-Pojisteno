@@ -41,7 +41,7 @@
     </div>
 </section>
 <section>
-    <form class="container w-25 text-white mt-5 p-3 py-2" th:object="${insuranceDTO}">
+    <form class="container w-25 text-white mt-5 p-3 py-2" th:object="${insurersDTO}">
         <div class="row pt-2">
             <div class="col-sm">
                 <label>Jméno:</label>
@@ -89,7 +89,7 @@
             <div class="col-sm">
                 <label>PSČ:</label>
                 <label>
-                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{postCode}"/>
+                    <input type="text" class="border border-secondary rounded bg-dark text-white w-100 form-control" th:field="*{postalCode}"/>
                 </label>
             </div>
             <div class="col-sm"></div>

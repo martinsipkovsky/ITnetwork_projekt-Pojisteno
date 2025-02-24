@@ -3,7 +3,7 @@ package org.azanar.entities;
 import jakarta.persistence.*;
 
 @Entity
-public class InsuraresEntity {
+public class InsurersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;

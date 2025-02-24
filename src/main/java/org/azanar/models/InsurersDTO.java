@@ -2,7 +2,7 @@ package org.azanar.models;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class InsuraresDTO {
+public class InsurersDTO {
     @NotBlank(message = "Vyplňte obsah")
     private String firstname;
 
