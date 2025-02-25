@@ -7,4 +7,5 @@ public interface InsurersService {
     List<InsurersDTO> getAll();
     public InsurersDTO getById(long insurerIs);
     void edit(InsurersDTO insurer);
+    void remove(long insurerId);
 }

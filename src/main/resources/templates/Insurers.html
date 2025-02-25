@@ -37,7 +37,7 @@
 </header>
 <section class="container-fluid mt-5 pt-5">
     <div class="container d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary">Nový pojištěnec</button>
+        <a class="btn btn-primary" th:href="@{/create/insurer}">Nový pojištěnec</a>
     </div>
 </section>
 <section>
@@ -65,8 +65,8 @@
                 <p th:text="${insurer.street} + ' ' + ${insurer.city} + ' ' + ${insurer.postalCode}"></p>
             </div>
             <div class="col-sm border py-2 d-flex justify-content-center">
-                <a type="submit" class="btn btn-warning mx-2" th:href="@{'/edit/insurer/' + ${insurer.userId}}">Upravit</a>
-                <a type="submit" class="btn btn-danger mx-2" th:href="@{'/delete/insurer/' + ${insurer.userId}}">Smazat</a>
+                <a class="btn btn-warning mx-2" th:href="@{'/edit/insurer/' + ${insurer.userId}}">Upravit</a>
+                <a class="btn btn-danger mx-2" th:href="@{'/delete/insurer/' + ${insurer.userId}}">Smazat</a>
             </div>
         </div>
     </div>

@@ -63,4 +63,10 @@ public class InsurersServiceImp implements InsurersService{
         insurersMapper.updateInsurersEntity(insurer, fetchedInsurer);
         insurersRepository.save(fetchedInsurer);
     }
+
+    @Override
+    public void remove(long insurerId) {
+        InsurersEntity fetchedInsurer = insurersRepository.findById(insurerId).orElseThrow();
+        insurersRepository.delete(fetchedInsurer);
+    }
 }

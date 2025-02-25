@@ -54,7 +54,7 @@ public class AppController {
         }
         insurersService.create(insurersDTO);
 
-        return "/insurers";
+        return "redirect:/insurers";
     }
 
     @GetMapping("/insurers")
@@ -67,10 +67,31 @@ public class AppController {
     @GetMapping("/edit/insurer/{insurerId}")
     public String renderEditInsurer(@ModelAttribute InsurersDTO insurersDTO,
                                     @PathVariable long insurerId) {
-        System.out.println(insurerId);
         InsurersDTO fetchedInsurer = insurersService.getById(insurerId);
-        System.out.println(insurerId);
         insurersMapper.updateInsurersDTO(fetchedInsurer, insurersDTO);
         return "create-insurer";
+    }
+
+    @PostMapping("/edit/insurer/{insurerId}")
+    public String editInsurer(@ModelAttribute InsurersDTO insurersDTO,
+                              @PathVariable long insurerId,
+                              BindingResult result) {
+        System.out.println("[Request] edit insurer -> DB");
+
+        if (result.hasErrors()) {
+            System.out.println("[Error] edit insurer (POST)");
+        }
+
+        insurersDTO.setUserId(insurerId);
+        insurersService.edit(insurersDTO);
+
+        return "redirect:/insurers";
+    }
+
+    @GetMapping("/delete/insurer/{insurerId}")
+    public String deleteInsurer(@PathVariable long insurerId) {
+        insurersService.remove(insurerId);
+
+        return "redirect:/insurers";
     }
 }
