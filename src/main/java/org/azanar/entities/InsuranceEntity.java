@@ -11,7 +11,7 @@ public class InsuranceEntity {
     private long contractId;
 
     @Column(nullable = false)
-    private long userId;
+    private long id;
 
     @Column(nullable = false)
     private String email;
@@ -31,8 +31,8 @@ public class InsuranceEntity {
     @Column(nullable = false)
     private Date expires;
 
-    public long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
     public Date getCreated() {
@@ -59,8 +59,8 @@ public class InsuranceEntity {
         return suma;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setContractId(long contractId) {

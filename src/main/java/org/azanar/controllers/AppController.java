@@ -50,7 +50,7 @@ public class AppController {
         UserDTO user = userService.getByEmail(email);
         model.addAttribute("user", user);
 
-        InsuranceDTO insurance = insuranceService.getByEmail(email);
+        List<InsuranceDTO> insurance = insuranceService.getByEmail(email);
         model.addAttribute("insurance", insurance);
 
         return "/overview";

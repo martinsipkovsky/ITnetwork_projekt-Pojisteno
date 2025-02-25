@@ -1,16 +1,15 @@
 package org.azanar.models;
 
 import org.azanar.entities.InsuranceEntity;
-import org.azanar.entities.InsurersEntity;
 import org.azanar.repositories.InsuranceRepository;
-import org.azanar.repositories.InsurersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
+@Service
 public class InsuranceServiceImp implements InsuranceService{
     @Autowired
     private InsuranceRepository insuranceRepository;
@@ -52,15 +51,22 @@ public class InsuranceServiceImp implements InsuranceService{
     }
 
     @Override
-    public InsuranceDTO getByEmail(String email) {
-        InsuranceEntity fetchedInsurance = insuranceRepository.findByEmail(email).orElseThrow();
+    public List<InsuranceDTO> getByEmail(String email) {
+        List<InsuranceDTO> insurance = new ArrayList<>();
 
-        return insuranceMapper.toDTO(fetchedInsurance);
+        Iterable<InsuranceEntity> fetchedArticles = insuranceRepository.findAll();
+        for (InsuranceEntity articleEntity : fetchedArticles) {
+            InsuranceDTO mappedInsurers = insuranceMapper.toDTO(articleEntity);
+            if (mappedInsurers.getEmail().equals(email)) {
+                insurance.add(mappedInsurers);
+            }
+        }
+        return insurance;
     }
 
     @Override
     public void edit(InsuranceDTO insurance) {
-        InsuranceEntity fetchedInsurance = insuranceRepository.findById(insurance.getUserId()).orElseThrow();
+        InsuranceEntity fetchedInsurance = insuranceRepository.findById(insurance.getId()).orElseThrow();
 
         insuranceMapper.updateInsuranceEntity(insurance, fetchedInsurance);
         insuranceRepository.save(fetchedInsurance);

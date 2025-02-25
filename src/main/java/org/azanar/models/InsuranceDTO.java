@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class InsuranceDTO {
     @NotBlank(message = "Vyplňte obsah")
-    private long userId;
+    private long id;
 
     @NotBlank(message = "Vyplňte obsah")
     private String insuranceType;
@@ -15,7 +15,7 @@ public class InsuranceDTO {
     private String suma;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String item;
+    private String email;
 
     @NotBlank(message = "Vyplňte obsah")
     private Date created;
@@ -34,8 +34,8 @@ public class InsuranceDTO {
         this.suma = suma;
     }
 
-    public void setUserId(@NotBlank(message = "Vyplňte obsah") long userId) {
-        this.userId = userId;
+    public void setId(@NotBlank(message = "Vyplňte obsah") long id) {
+        this.id = id;
     }
 
     public void setInsuranceType(@NotBlank(message = "Vyplňte obsah") String insuranceType) {
@@ -50,8 +50,8 @@ public class InsuranceDTO {
         this.expires = expires;
     }
 
-    public void setItem(@NotBlank(message = "Vyplňte obsah") String item) {
-        this.item = item;
+    public void setEmail(@NotBlank(message = "Vyplňte obsah") String email) {
+        this.email = email;
     }
 
     public @NotBlank(message = "Vyplňte obsah") Date getCreated() {
@@ -62,8 +62,8 @@ public class InsuranceDTO {
         return suma;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") long getUserId() {
-        return userId;
+    public @NotBlank(message = "Vyplňte obsah") long getId() {
+        return id;
     }
 
     public @NotBlank(message = "Vyplňte obsah") String getInsuranceType() {
@@ -78,7 +78,7 @@ public class InsuranceDTO {
         return expires;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getItem() {
-        return item;
+    public @NotBlank(message = "Vyplňte obsah") String getEmail() {
+        return email;
     }
 }
