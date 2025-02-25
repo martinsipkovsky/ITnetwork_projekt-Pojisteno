@@ -35,6 +35,8 @@ public class ApplicationSecurityConfiguration {
                 .logout()
                 .logoutUrl("/logout")
                 .and()
+                .csrf()
+                .disable()
                 .build();
     }
 

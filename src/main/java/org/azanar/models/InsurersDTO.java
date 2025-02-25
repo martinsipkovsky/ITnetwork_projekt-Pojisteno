@@ -3,6 +3,8 @@ package org.azanar.models;
 import jakarta.validation.constraints.NotBlank;
 
 public class InsurersDTO {
+    private long userId;
+
     @NotBlank(message = "Vyplňte obsah")
     private String firstname;
 
@@ -78,5 +80,13 @@ public class InsurersDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 }
