@@ -3,6 +3,7 @@ package org.azanar.controllers;
 import jakarta.validation.Valid;
 import org.azanar.entities.UserEntity;
 import org.azanar.models.*;
+import org.azanar.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
@@ -28,7 +29,13 @@ public class AppController {
     private InsurersService insurersService;
 
     @Autowired
+    private InsuranceService insuranceService;
+
+    @Autowired
     private  InsurersMapper insurersMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Secured("ROLE_USER")
     @GetMapping("/user")
@@ -36,6 +43,17 @@ public class AppController {
         UserEntity user = (UserEntity) userService.loadUserByUsername(auth.getName());
         model.addAttribute("user", user);
         return "overview";
+    }
+
+    @GetMapping("/user/{email}")
+    public String renderOtherUser(@ModelAttribute UserDTO userDTO, @ModelAttribute InsuranceDTO insuranceDTO, @PathVariable String email, Model model) {
+        UserDTO user = userService.getByEmail(email);
+        model.addAttribute("user", user);
+
+        InsuranceDTO insurance = insuranceService.getByEmail(email);
+        model.addAttribute("insurance", insurance);
+
+        return "/overview";
     }
 
     //@Secured("ROLE_ADMIN")

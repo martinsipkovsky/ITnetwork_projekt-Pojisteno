@@ -1,5 +1,6 @@
 package org.azanar.models;
 
+import org.azanar.entities.InsurersEntity;
 import org.azanar.entities.UserEntity;
 import org.azanar.exceptions.PasswordsDoNotEqualException;
 import org.azanar.repositories.UserRepository;
@@ -19,6 +20,9 @@ public class UserServiceImp implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public void create(UserDTO user, boolean isAdmin) throws PasswordsDoNotEqualException, DuplicateEmailException {
@@ -52,6 +56,13 @@ public class UserServiceImp implements UserService {
         System.out.println("Nalezen uživatel: " + user.getEmail() + " | Heslo: " + user.getPassword());
 
         return user;
+    }
+
+    @Override
+    public UserDTO getByEmail(String email) {
+        UserEntity fetchedUser = userRepository.findByEmail(email).orElseThrow();
+
+        return userMapper.toDTO(fetchedUser);
     }
 
 }

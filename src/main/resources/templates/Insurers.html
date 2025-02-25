@@ -59,7 +59,7 @@
         </div>
         <div class="row text-white" th:each="insurer: ${insurers}">
             <div class="col-sm border">
-                <p th:text="${insurer.firstname} + ' ' + ${insurer.lastname}"></p>
+                <a th:text="${insurer.firstname} + ' ' + ${insurer.lastname}" th:href="@{'/user/' + ${insurer.email}}"></a>
             </div>
             <div class="col-sm border">
                 <p th:text="${insurer.street} + ' ' + ${insurer.city} + ' ' + ${insurer.postalCode}"></p>

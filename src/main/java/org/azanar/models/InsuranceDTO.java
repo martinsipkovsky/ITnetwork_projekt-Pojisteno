@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class InsuranceDTO {
     @NotBlank(message = "Vyplňte obsah")
-    private String userId;
+    private long userId;
 
     @NotBlank(message = "Vyplňte obsah")
     private String insuranceType;
@@ -34,7 +34,7 @@ public class InsuranceDTO {
         this.suma = suma;
     }
 
-    public void setUserId(@NotBlank(message = "Vyplňte obsah") String userId) {
+    public void setUserId(@NotBlank(message = "Vyplňte obsah") long userId) {
         this.userId = userId;
     }
 
@@ -62,7 +62,7 @@ public class InsuranceDTO {
         return suma;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getUserId() {
+    public @NotBlank(message = "Vyplňte obsah") long getUserId() {
         return userId;
     }
 

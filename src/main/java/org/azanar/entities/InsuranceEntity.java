@@ -14,6 +14,9 @@ public class InsuranceEntity {
     private long userId;
 
     @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String insuranceType;
 
     @Column(nullable = false)
@@ -82,5 +85,13 @@ public class InsuranceEntity {
 
     public void setSuma(String suma) {
         this.suma = suma;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
