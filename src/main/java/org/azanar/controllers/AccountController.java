@@ -62,4 +62,9 @@ public class AccountController {
         return "redirect:/login";
     }
 
+    @GetMapping("/logout")
+    public String logout() {
+        return "redirect:/";
+    }
+
 }
