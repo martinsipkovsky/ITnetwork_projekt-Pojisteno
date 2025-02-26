@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.Date;
 
 public class InsuranceDTO {
+    private long contractId;
+
     @NotBlank(message = "Vyplňte obsah")
     private String insuranceType;
 
@@ -68,5 +70,13 @@ public class InsuranceDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setContractId(long contractId) {
+        this.contractId = contractId;
+    }
+
+    public long getContractId() {
+        return contractId;
     }
 }

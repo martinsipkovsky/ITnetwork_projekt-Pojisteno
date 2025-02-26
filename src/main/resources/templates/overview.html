@@ -94,14 +94,14 @@
             </div>
             <div class="row text-white" th:each="i: ${insurance}">
                 <div class="col-sm border">
-                    <a th:text="${i.insuranceType}" th:href="@{'/insurance/' + ${i.id}}"></a>
+                    <a th:text="${i.insuranceType}" th:href="@{'/insurance/' + ${i.contractId}}"></a>
                 </div>
                 <div class="col-sm border">
                     <p th:text="${i.suma}"></p>
                 </div>
                 <div class="col-sm border py-2 d-flex justify-content-center">
-                    <a class="btn btn-warning mx-2" th:href="@{'/edit/insurance/' + ${i.id}}">Upravit</a>
-                    <a class="btn btn-danger mx-2" th:href="@{'/delete/insurance/' + ${i.id}}">Smazat</a>
+                    <a class="btn btn-warning mx-2" th:href="@{'/edit/insurance/' + ${i.contractId}}">Upravit</a>
+                    <a class="btn btn-danger mx-2" th:href="@{'/delete/insurance/' + ${i.contractId}}">Smazat</a>
                 </div>
             </div>
         </div>

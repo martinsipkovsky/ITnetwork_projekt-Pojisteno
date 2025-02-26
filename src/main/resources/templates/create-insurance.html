@@ -84,11 +84,11 @@
                 <div class="row py-2">
                     <div class="col-sm">
                         <label class="h4">Druh pojištění</label>
-                        <select class="form-select">
-                            <option>Pojištění nemovitosti</option>
-                            <option>Pojištění movitosti</option>
-                            <option>Cestovní pojištění</option>
-                            <option>Pojistka na blbost</option>
+                        <select class="form-select" th:field="*{insuranceType}">
+                            <option value="nemovitost">Pojištění nemovitosti</option>
+                            <option value="movitost">Pojištění movitosti</option>
+                            <option value="cestovní">Cestovní pojištění</option>
+                            <option value="blbost">Pojistka na blbost</option>
                         </select>
                     </div>
                 </div>

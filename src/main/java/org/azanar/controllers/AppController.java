@@ -37,6 +37,9 @@ public class AppController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private InsuranceMapper insuranceMapper;
+
     @Secured("ROLE_USER")
     @GetMapping("/user")
     public String renderOverview(Authentication auth, Model model) {
@@ -46,7 +49,7 @@ public class AppController {
     }
 
     @GetMapping("/user/{email}")
-    public String renderOtherUser(@ModelAttribute UserDTO userDTO, @ModelAttribute InsuranceDTO insuranceDTO, @PathVariable String email, Model model) {
+    public String renderOtherUser(@PathVariable String email, Model model) {
         UserDTO user = userService.getByEmail(email);
         model.addAttribute("user", user);
 
@@ -136,5 +139,28 @@ public class AppController {
         System.out.println("[LOG] create insurance -> DB (POST) finished.");
 
         return "redirect:/user/" + email;
+    }
+
+    @GetMapping("/delete/insurance/{id}")
+    public String deleteInsurance(@PathVariable String id, @ModelAttribute UserDTO userDTO) {
+
+        insuranceService.remove(Integer.parseInt(id));
+
+        return "redirect:/user/"+userDTO.getEmail();
+    }
+
+    @GetMapping("/edit/insurance/{id}")
+    public String editInsurance(@ModelAttribute InsuranceDTO insuranceDTO, @PathVariable long id) {
+        InsuranceDTO fetched = insuranceService.getById(id);
+        insuranceMapper.updateInsuranceDTO(fetched, insuranceDTO);
+
+        return "redirect:/create/insurance/" + insuranceDTO.getEmail();
+    }
+
+    @PostMapping("/edit/insurance/{id}")
+    public String editInsurancePost(@ModelAttribute InsuranceDTO insuranceDTO, @PathVariable long id) {
+        insuranceService.edit(insuranceDTO);
+
+        return "redirect:/user/" + insuranceDTO.getEmail();
     }
 }
