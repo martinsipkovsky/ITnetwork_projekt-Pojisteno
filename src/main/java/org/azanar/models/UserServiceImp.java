@@ -13,6 +13,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.azanar.exceptions.DuplicateEmailException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserServiceImp implements UserService {
     @Autowired
@@ -63,6 +66,19 @@ public class UserServiceImp implements UserService {
         UserEntity fetchedUser = userRepository.findByEmail(email).orElseThrow();
 
         return userMapper.toDTO(fetchedUser);
+    }
+
+    @Override
+    public List<UserDTO> getAll() {
+        List<UserDTO> users = new ArrayList<>();
+
+        Iterable<UserEntity> fetchedArticles = userRepository.findAll();
+        for (UserEntity articleEntity : fetchedArticles) {
+            UserDTO mappedUser = userMapper.toDTO(articleEntity);
+            users.add(mappedUser);
+        }
+
+        return users;
     }
 
 }

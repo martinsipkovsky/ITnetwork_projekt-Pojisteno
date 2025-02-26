@@ -174,4 +174,12 @@ public class AppController {
 
         return "insurance";
     }
+
+    @GetMapping("/users")
+    public String renderUsers(Model model) {
+        List<UserDTO> users = userService.getAll();
+        model.addAttribute("users", users);
+
+        return "users";
+    }
 }
