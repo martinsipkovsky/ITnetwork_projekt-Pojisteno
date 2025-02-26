@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface InsuranceRepository extends CrudRepository<InsuranceEntity, Long> {
-    Optional<InsuranceEntity> findById(Long id);
+    Optional<InsuranceEntity> findById(long id);
     Optional<InsuranceEntity> findByEmail(String email);
 }

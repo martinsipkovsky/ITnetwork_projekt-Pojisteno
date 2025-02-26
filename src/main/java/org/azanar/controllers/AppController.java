@@ -132,35 +132,46 @@ public class AppController {
             System.out.println("[ERROR] create insurance -> DB (POST)");
             return "/";
         }
-        System.out.println(insurance.getInsuranceDescription());
         insuranceService.create(insurance);
-
-
-        System.out.println("[LOG] create insurance -> DB (POST) finished.");
 
         return "redirect:/user/" + email;
     }
 
     @GetMapping("/delete/insurance/{id}")
-    public String deleteInsurance(@PathVariable String id, @ModelAttribute UserDTO userDTO) {
+    public String deleteInsurance(@PathVariable long id, @ModelAttribute UserDTO userDTO) {
+        InsuranceDTO insuranceDTO = insuranceService.getById(id);
+        String mail = insuranceDTO.getEmail();
+        insuranceService.remove(id);
 
-        insuranceService.remove(Integer.parseInt(id));
-
-        return "redirect:/user/"+userDTO.getEmail();
+        return "redirect:/user/"+mail;
     }
 
     @GetMapping("/edit/insurance/{id}")
-    public String editInsurance(@ModelAttribute InsuranceDTO insuranceDTO, @PathVariable long id) {
+    public String editInsurance(@ModelAttribute InsuranceDTO insuranceDTO, @PathVariable long id, Model model) {
         InsuranceDTO fetched = insuranceService.getById(id);
         insuranceMapper.updateInsuranceDTO(fetched, insuranceDTO);
+        model.addAttribute("insurance", fetched);
 
-        return "redirect:/create/insurance/" + insuranceDTO.getEmail();
+        return "create-insurance";
     }
 
     @PostMapping("/edit/insurance/{id}")
-    public String editInsurancePost(@ModelAttribute InsuranceDTO insuranceDTO, @PathVariable long id) {
-        insuranceService.edit(insuranceDTO);
+    public String editInsurancePost(@ModelAttribute InsuranceDTO insurance, @PathVariable long id) {
+        System.out.println(id);
+        System.out.println(insurance.getContractId());
+        InsuranceDTO fetched = insuranceService.getById(id);
+        insurance = MergeInsuranceDTO.merge(fetched, insurance);
+        insurance.setContractId(id);
+        insuranceService.edit(insurance);
 
-        return "redirect:/user/" + insuranceDTO.getEmail();
+        return "redirect:/user/" + insurance.getEmail();
+    }
+
+    @GetMapping("/insurance/{id}")
+    public String renderDetail(@ModelAttribute InsuranceDTO insuranceDTO, @PathVariable long id, Model model) {
+        insuranceDTO = insuranceService.getById(id);
+        model.addAttribute("insurance", insuranceDTO);
+
+        return "insurance";
     }
 }

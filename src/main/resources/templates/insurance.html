@@ -79,47 +79,55 @@
                 <p class="text-white h5" th:text="'Uživatel: ' + ${insurance.email}">Uživatel: </p>
             </div>
         </div>
-        <form class="container py-4 h-100 w-50 d-flex text-white justify-content-center border border-secondary rounded-4" th:object="${insurance}"  method="post">
+        <div class="container py-4 h-100 w-25 d-flex text-white justify-content-center border border-secondary rounded-4" th:object="${insurance}"  method="post">
             <div class="row w-100 d-flex justify-content-center">
-                <div class="row py-2">
+                <div class="row">
                     <div class="col-sm">
-                        <label class="h4">Druh pojištění</label>
-                        <select class="form-select" th:field="*{insuranceType}">
-                            <option value="nemovitost">Pojištění nemovitosti</option>
-                            <option value="movitost">Pojištění movitosti</option>
-                            <option value="cestovní">Cestovní pojištění</option>
-                            <option value="blbost">Pojistka na blbost</option>
-                        </select>
+                        <p>Pojištění:</p>
+                    </div>
+                    <div class="col-sm">
+                        <p th:text="*{insuranceType}"></p>
                     </div>
                 </div>
-                <div class="row py-2">
+                <div class="row">
                     <div class="col-sm">
-                        <label class="h5">Částka</label>
-                        <input type="number" class="form-control" th:field="*{suma}"/>
+                        <p>Částka:</p>
                     </div>
                     <div class="col-sm">
-                        <label class="h5">Předmět pojištění</label>
-                        <input type="text" class="form-control" th:field="*{insuranceDescription}">
+                        <p th:text="*{suma}"></p>
                     </div>
                 </div>
-                <div class="row py-2">
+                <div class="row">
                     <div class="col-sm">
-                        <label class="h5">Platnost od:</label>
-                        <input type="date" class="form-control" th:field="*{created}"/>
+                        <p>Předmět:</p>
                     </div>
                     <div class="col-sm">
-                        <label class="h5">Platnost do:</label>
-                        <input type="date" class="form-control" th:field="*{expires}">
+                        <p th:text="*{insuranceDescription}"></p>
                     </div>
                 </div>
-                <div class="row py-2">
+                <div class="row">
                     <div class="col-sm">
-                        <button type="submit" class="btn btn-primary w-100 mt-4">Potvrdit</button>
-                        <a type="submit" class="btn btn-danger w-100 mt-2" th:href="@{'/user/' + *{email}}">Zrušit</a>
+                        <p>Platnost od:</p>
+                    </div>
+                    <div class="col-sm">
+                        <p th:text="*{created}"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <p>Platnost do:</p>
+                    </div>
+                    <div class="col-sm">
+                        <p th:text="*{expires}"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <a class="btn btn-primary w-100 mt-3" th:href="@{'/user/' + *{email}}">Zpět</a>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </section>
 </div>
 

@@ -64,7 +64,7 @@ public class InsuranceServiceImp implements InsuranceService{
 
     @Override
     public void edit(InsuranceDTO insurance) {
-        InsuranceEntity fetchedInsurance = insuranceRepository.findByEmail(insurance.getEmail()).orElseThrow();
+        InsuranceEntity fetchedInsurance = insuranceRepository.findById(insurance.getContractId()).orElseThrow();
 
         insuranceMapper.updateInsuranceEntity(insurance, fetchedInsurance);
         insuranceRepository.save(fetchedInsurance);
