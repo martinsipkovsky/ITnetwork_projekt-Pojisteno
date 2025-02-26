@@ -20,7 +20,8 @@ public class InsurersServiceImp implements InsurersService{
     @Override
     public void create(InsurersDTO insurersDTO) {
         InsurersEntity insurersEntity = new InsurersEntity();
-
+        insurersEntity = insurersMapper.toEntity(insurersDTO);
+        /*
         insurersEntity.setFirstname(insurersDTO.getFirstname());
         insurersEntity.setLastname(insurersDTO.getLastname());
         insurersEntity.setEmail(insurersDTO.getEmail());
@@ -28,7 +29,7 @@ public class InsurersServiceImp implements InsurersService{
         insurersEntity.setStreet(insurersDTO.getStreet());
         insurersEntity.setCity(insurersDTO.getCity());
         insurersEntity.setPostalCode(insurersDTO.getPostalCode());
-
+        */
         try {
             insurersRepository.save(insurersEntity);
         } catch (DataIntegrityViolationException e) {

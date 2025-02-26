@@ -76,9 +76,10 @@
         <div class="row">
             <div class="col-sm">
                 <h3 class="mb-5 pb-3 text-white">Pojištění</h3>
+                <p class="text-white h5" th:text="'Uživatel: ' + ${insurance.email}">Uživatel: </p>
             </div>
         </div>
-        <form class="container py-4 h-100 w-50 d-flex text-white justify-content-center border border-secondary rounded-4">
+        <form class="container py-4 h-100 w-50 d-flex text-white justify-content-center border border-secondary rounded-4" th:object="${insurance}" th:href="@{'/create/insurance/' + ${insurance.email}}" method="post">
             <div class="row w-100 d-flex justify-content-center">
                 <div class="row py-2">
                     <div class="col-sm">
@@ -94,27 +95,27 @@
                 <div class="row py-2">
                     <div class="col-sm">
                         <label class="h5">Částka</label>
-                        <input type="number" class="form-control"/>
+                        <input type="number" class="form-control" th:field="*{suma}"/>
                     </div>
                     <div class="col-sm">
                         <label class="h5">Předmět pojištění</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" th:field="*{insuranceDescription}">
                     </div>
                 </div>
                 <div class="row py-2">
                     <div class="col-sm">
                         <label class="h5">Platnost od:</label>
-                        <input type="date" class="form-control"/>
+                        <input type="date" class="form-control" th:field="*{created}"/>
                     </div>
                     <div class="col-sm">
                         <label class="h5">Platnost do:</label>
-                        <input type="date" class="form-control">
+                        <input type="date" class="form-control" th:field="*{expires}">
                     </div>
                 </div>
                 <div class="row py-2">
                     <div class="col-sm">
-                        <input type="submit" class="btn btn-primary w-100 mt-4" th:href="@{/create/insurance}" value="Potvrdit">
-                        <input type="submit" class="btn btn-danger w-100 mt-2" th:href="@{/}" value="Zrušit">
+                        <button type="submit" class="btn btn-primary w-100 mt-4">Potvrdit</button>
+                        <a type="submit" class="btn btn-danger w-100 mt-2" th:href="@{'/user/' + *{email}}">Zrušit</a>
                     </div>
                 </div>
             </div>

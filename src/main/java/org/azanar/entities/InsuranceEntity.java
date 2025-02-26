@@ -11,9 +11,6 @@ public class InsuranceEntity {
     private long contractId;
 
     @Column(nullable = false)
-    private long id;
-
-    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -23,23 +20,19 @@ public class InsuranceEntity {
     private String suma;
 
     @Column(nullable = false)
-    private String item;
+    private String insuranceDescription;
 
     @Column(nullable = false)
-    private Date created;
+    private String created;
 
     @Column(nullable = false)
-    private Date expires;
+    private String expires;
 
-    public long getId() {
-        return id;
-    }
-
-    public Date getCreated() {
+    public String getCreated() {
         return created;
     }
 
-    public Date getExpires() {
+    public String getExpires() {
         return expires;
     }
 
@@ -52,26 +45,22 @@ public class InsuranceEntity {
     }
 
     public String getItem() {
-        return item;
+        return insuranceDescription;
     }
 
     public String getSuma() {
         return suma;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public void setContractId(long contractId) {
         this.contractId = contractId;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(String created) {
         this.created = created;
     }
 
-    public void setExpires(Date expires) {
+    public void setExpires(String expires) {
         this.expires = expires;
     }
 
@@ -80,7 +69,7 @@ public class InsuranceEntity {
     }
 
     public void setItem(String item) {
-        this.item = item;
+        this.insuranceDescription = item;
     }
 
     public void setSuma(String suma) {
@@ -93,5 +82,13 @@ public class InsuranceEntity {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setInsuranceDescription(String insuranceDescription) {
+        this.insuranceDescription = insuranceDescription;
+    }
+
+    public String getInsuranceDescription() {
+        return insuranceDescription;
     }
 }

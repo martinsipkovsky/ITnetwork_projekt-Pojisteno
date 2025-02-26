@@ -112,4 +112,29 @@ public class AppController {
 
         return "redirect:/insurers";
     }
+
+    @GetMapping("/create/insurance/{email}")
+    public String renderInsuranceForm(@ModelAttribute InsuranceDTO insuranceDTO, @PathVariable String email, Model model) {
+        insuranceDTO.setEmail(email);
+        model.addAttribute("insurance", insuranceDTO);
+
+        return "create-insurance";
+    }
+
+    @PostMapping("/create/insurance/{email}")
+    public String processInsuranceForm(@ModelAttribute InsuranceDTO insurance, @PathVariable String email, BindingResult result) {
+        System.out.println("[LOG] create insurance -> DB (POST)");
+
+        if (result.hasErrors()) {
+            System.out.println("[ERROR] create insurance -> DB (POST)");
+            return "/";
+        }
+        System.out.println(insurance.getInsuranceDescription());
+        insuranceService.create(insurance);
+
+
+        System.out.println("[LOG] create insurance -> DB (POST) finished.");
+
+        return "redirect:/user/" + email;
+    }
 }

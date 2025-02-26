@@ -19,13 +19,11 @@ public class InsuranceServiceImp implements InsuranceService{
 
     @Override
     public void create(InsuranceDTO insuranceDTO) {
-        InsuranceEntity insuranceEntity = new InsuranceEntity();
-
-        insuranceEntity = insuranceMapper.toEntity(insuranceDTO);
+        InsuranceEntity insuranceEntity = insuranceMapper.toEntity(insuranceDTO);
 
         try {
             insuranceRepository.save(insuranceEntity);
-        } catch (DataIntegrityViolationException e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
@@ -66,7 +64,7 @@ public class InsuranceServiceImp implements InsuranceService{
 
     @Override
     public void edit(InsuranceDTO insurance) {
-        InsuranceEntity fetchedInsurance = insuranceRepository.findById(insurance.getId()).orElseThrow();
+        InsuranceEntity fetchedInsurance = insuranceRepository.findByEmail(insurance.getEmail()).orElseThrow();
 
         insuranceMapper.updateInsuranceEntity(insurance, fetchedInsurance);
         insuranceRepository.save(fetchedInsurance);

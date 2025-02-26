@@ -6,27 +6,23 @@ import java.util.Date;
 
 public class InsuranceDTO {
     @NotBlank(message = "Vyplňte obsah")
-    private long id;
-
-    @NotBlank(message = "Vyplňte obsah")
     private String insuranceType;
 
     @NotBlank(message = "Vyplňte obsah")
     private String suma;
 
-    @NotBlank(message = "Vyplňte obsah")
     private String email;
 
     @NotBlank(message = "Vyplňte obsah")
-    private Date created;
+    private String created;
 
     @NotBlank(message = "Vyplňte obsah")
-    private Date expires;
+    private String expires;
 
     @NotBlank(message = "Vyplňte obsah")
-    private String phoneNumber;
+    private String insuranceDescription;
 
-    public void setCreated(@NotBlank(message = "Vyplňte obsah") Date created) {
+    public void setCreated(@NotBlank(message = "Vyplňte obsah") String created) {
         this.created = created;
     }
 
@@ -34,27 +30,23 @@ public class InsuranceDTO {
         this.suma = suma;
     }
 
-    public void setId(@NotBlank(message = "Vyplňte obsah") long id) {
-        this.id = id;
-    }
-
     public void setInsuranceType(@NotBlank(message = "Vyplňte obsah") String insuranceType) {
         this.insuranceType = insuranceType;
     }
 
-    public void setPhoneNumber(@NotBlank(message = "Vyplňte obsah") String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setInsuranceDescription(@NotBlank(message = "Vyplňte obsah") String insuranceDescription) {
+        this.insuranceDescription = insuranceDescription;
     }
 
-    public void setExpires(@NotBlank(message = "Vyplňte obsah") Date expires) {
+    public void setExpires(@NotBlank(message = "Vyplňte obsah") String expires) {
         this.expires = expires;
     }
 
-    public void setEmail(@NotBlank(message = "Vyplňte obsah") String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") Date getCreated() {
+    public @NotBlank(message = "Vyplňte obsah") String getCreated() {
         return created;
     }
 
@@ -62,23 +54,19 @@ public class InsuranceDTO {
         return suma;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") long getId() {
-        return id;
-    }
-
     public @NotBlank(message = "Vyplňte obsah") String getInsuranceType() {
         return insuranceType;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getPhoneNumber() {
-        return phoneNumber;
+    public @NotBlank(message = "Vyplňte obsah") String getInsuranceDescription() {
+        return insuranceDescription;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") Date getExpires() {
+    public @NotBlank(message = "Vyplňte obsah") String getExpires() {
         return expires;
     }
 
-    public @NotBlank(message = "Vyplňte obsah") String getEmail() {
+    public String getEmail() {
         return email;
     }
 }
