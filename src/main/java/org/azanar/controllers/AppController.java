@@ -44,7 +44,10 @@ public class AppController {
     @GetMapping("/user")
     public String renderOverview(Authentication auth, Model model) {
         UserEntity user = (UserEntity) userService.loadUserByUsername(auth.getName());
+        UserDTO userDTO = userMapper.toDTO(user);
         model.addAttribute("user", user);
+
+
         return "overview";
     }
 

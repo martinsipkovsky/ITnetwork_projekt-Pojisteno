@@ -49,6 +49,13 @@ public class InsurersServiceImp implements InsurersService{
     }
 
     @Override
+    public InsurersDTO getByEmail(String email) {
+        InsurersEntity fetchedInsurer = insurersRepository.findByEmail(email).orElseThrow();
+
+        return insurersMapper.toDTO(fetchedInsurer);
+    }
+
+    @Override
     public void edit(InsurersDTO insurer) {
         InsurersEntity fetchedInsurer = insurersRepository.findById(insurer.getUserId()).orElseThrow();
 
